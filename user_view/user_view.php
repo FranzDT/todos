@@ -34,8 +34,11 @@
         ?>
                 <table>
                         <tr>
+                            <th>Mark Done</th>
                             <th>Description</th>
                             <th>Status</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
         <?php
                 while($row = $result->fetch_assoc()){ 
@@ -54,7 +57,7 @@
                             <td>
                                 
                                 <!-- deletes current selected task -->
-                                <form action="../delete_todo/delete_todo_process.php" method="POST">
+                                <form action="../delete/delete_todo_process.php" method="POST">
                                     <input type="hidden" id="id" name="id" value='<?php echo $row["id"]; ?>'>
                                     <input type="submit" value="DELETE">
                                 </form>
@@ -87,16 +90,54 @@
                 // If admin wants to see the users
                 if($get == "ShowUser"){
                     // prompts added user by admin
-                    if(isset($_SESSION['addUser'])){
-                        addUser();
-                        unset($_SESSION['addUser']);
-                    }
+                    addUser();
+
+                    // prompts delete user status
+                    deleteUser();
 
                     // Add User
                     echo "<a href='../register/register.php?fromadmin=yes'>Add User</>";
                     
+                    // View all user
+                    $sql = adminUserView();
+                    $result = $conn->query($sql);
 
-                    $sql = 
+                    if($result->num_rows > 0){
+        ?>
+                <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Username</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
+        <?php
+                while($row =$result->fetch_assoc()){
+        ?>
+                <tr>
+                <td><?php echo $row['id'] ?></td>
+                    <td><?php echo $row['Full_Name'] ?></td>
+                    <td><?php echo $row['username'] ?></td>
+                    <td>
+                        <form action="../delete/delete_user_process.php" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                            <input type="submit" value="DELETE">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="../edit/edit_user_user.php" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                            <input type="submit" value="DELETE">
+                        </form>
+                    </td>
+                </tr>
+        <?php } ?>
+                </table>
+        <?php                
+                    }else{
+                        echo "Empty Set";
+                    }
                 }
         ?>
 

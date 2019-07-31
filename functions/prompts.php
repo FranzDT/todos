@@ -63,4 +63,16 @@
             }
         }
     }
+
+    function deleteUser(){
+        if(isset($_SESSION['deleteUser'])){
+            if($_SESSION['deleteUser']=="Successful"){
+                echo "Successfully deleted user<br>";
+                unset($_SESSION['deleteUser']);
+            }else{
+                echo "Failed delete user<br>";
+                unset($_SESSION['deleteUser']);
+            }
+        }
+    }
 ?>

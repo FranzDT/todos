@@ -33,4 +33,29 @@
             WHERE id = $id";
         return $sql;
     }
+
+    function adminUserView(){
+        $sql = "SELECT id, concat(fname, ' ',lname) 'Full_Name', username
+                FROM users
+                WHERE roleId=101";
+        return $sql;
+    }
+
+    function adminUserDelete($id){
+        $sql= "DELETE FROM users
+                WHERE id = $id";
+        return $sql;
+    }
+
+    function editUser($id){
+        $sql = "UPDATE users
+            SET ";
+    }
+
+    function getUser($id){
+        $sql = "SELECT *
+            FROM users
+            WHERE id = $id";
+        return $sql;
+    }
 ?>
