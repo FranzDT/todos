@@ -26,4 +26,11 @@
             WHERE id=$id";
         return $sql;
     }
+
+    function markDone($id){
+        $sql = "UPDATE todos
+            set status = 'done'
+            WHERE id = $id";
+        return $sql;
+    }
 ?>

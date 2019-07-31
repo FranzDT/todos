@@ -9,12 +9,10 @@
     $deadline = '2019-08-10';
 
     $sql = addTodo($id,$description);
-    if($conn->query($sql)){
+    if($conn->query($sql))
         $_SESSION['addTask'] = "Successful";
-        header("Location: ../user_view/user_view.php");
-    }
-    else   {
+    else   
         $_SESSION['addTask'] = "Unsuccessful";
-        header("Location: ../user_view/user_view.php");
-    }
+    $conn->close();
+    header("Location: ../user_view/user_view.php");
 ?>  

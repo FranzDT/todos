@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require "../cons/cons.php";
     require "../dbconnect/dbconnect.php";
     
@@ -11,9 +12,13 @@
             VALUES ('$fname','$lname','$username','$password',101)";
 
     if($conn->query($sql))
-        echo "Successfully added! <br>";
+        $_SESSION['addUser'] = "Successful";
     else    
-        echo "Error: ". $sql . "<br>". $conn-error;
+        $_SESSION['addUser'] = "Unsuccessful";
     $conn->close();
-    header("Location: ../index.php");
+
+    if($_GET['fromadmin'] == "no")
+        header("Location: ../index.php");
+    elseif($_GET['fromadmin'] == "yes")
+        header("Location: ../user_view/user_view.php?adminopt=ShowUser");
 ?>

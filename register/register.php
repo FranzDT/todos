@@ -9,12 +9,23 @@
         <title>Registration</title>
     </head>
     <body>
-        <form action="register_process.php" method="POST">
-            First Name: <input type="text" name="fname" placeholder="First Name"><br>
-            Last Name: <input type="text" name="lname" placeholder="Last Name"><br>
-            User Name:<input type="text" name="username" placeholder="User Name"><br>
-            Password: <input type="password" name="password" placeholder="Password"><br>
-            <input type="submit" value="SUBMIT">
-        </form>
+        <?php if(isset($_GET['fromadmin'])){
+        ?>
+            <form action="register_process.php?fromadmin=yes" method="POST">
+                First Name: <input type="text" name="fname" placeholder="First Name"><br>
+                Last Name: <input type="text" name="lname" placeholder="Last Name"><br>
+                User Name:<input type="text" name="username" placeholder="User Name"><br>
+                Password: <input type="password" name="password" placeholder="Password"><br>
+                <input type="submit" value="SUBMIT">
+            </form>
+        <?php }else{ ?>
+            <form action="register_process.php" method="POST">
+                First Name: <input type="text" name="fname" placeholder="First Name"><br>
+                Last Name: <input type="text" name="lname" placeholder="Last Name"><br>
+                User Name:<input type="text" name="username" placeholder="User Name"><br>
+                Password: <input type="password" name="password" placeholder="Password"><br>
+                <input type="submit" value="SUBMIT">
+            </form>
+        <?php } ?>
     </body>
 </html>

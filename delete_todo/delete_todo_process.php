@@ -9,12 +9,11 @@
 
     $sql = deleteTodo($id);
     
-    if($conn->query($sql) === true){
+    if($conn->query($sql) === true)
         $_SESSION['deleteTodo'] = "Successful";
-        header("Location: ../user_view/user_view.php");
-    }else{
+    else
         $_SESSION['deleteTodo'] = "Unsuccessful";
-        header("Location: ../user_view/user_view.php");
-    }
-        
+    
+    $conn->close();
+    header("Location: ../user_view/user_view.php");
 ?>
