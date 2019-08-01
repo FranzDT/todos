@@ -5,10 +5,9 @@
     require "../functions/functions.php";
 
     $id = $_POST['id'];
-    $description = $_POST['description'];
-
-    $sql = editTodo($id,$description);
-
+    $description = $_POST['tododescription'];
+    $title = $_POST['todotitle'];
+    $sql = editTodo($id,$title,$description);
 
     if($conn->query($sql) === true){
         $_SESSION['editTodo'] = "Successful";

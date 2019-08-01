@@ -7,9 +7,11 @@
     $lname = $_POST['lname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $roleid = $_POST['roleId'];
 
+    var_dump($roleid); die;
     $sql = "INSERT INTO users (fname,lname,username,password,roleId)
-            VALUES ('$fname','$lname','$username','$password',101)";
+            VALUES ('$fname','$lname','$username','$password',$roleid)";
 
     if($conn->query($sql))
         $_SESSION['addUser'] = "Successful";

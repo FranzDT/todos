@@ -88,9 +88,17 @@
       
             <!-- Login Form -->
             <form action="./auth/auth.php" method="POST" class="text center">
-                Username: <input type="text" name="username" placeholder="User Name"><br>
-                Password:  <input type="password" name="password" placeholder="Password"><br>
-                <input type="submit" value="LOGIN" class="float right">
+                <div class="form-group">
+                    <label for="Username">Username: </label>
+                    <input type="text" name="username"  class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password: </label>
+                    <input type="password" name="password"  class="form-control" required>
+                </div>
+                <!-- Username: <input type="text" name="username" placeholder="User Name"><br>
+                Password:  <input type="password" name="password" placeholder="Password"><br> -->
+                <input type="submit" value="LOGIN" class="btn btn-primary">
             </form>
       </div>
     </div>
@@ -113,24 +121,35 @@
 
 
         <!-- register form -->
-        <?php if(isset($_GET['fromadmin'])){
-            ?>
+        
                 <form action="./register/register_process.php?fromadmin=yes" method="POST">
-                    First Name: <input type="text" name="fname" placeholder="First Name" required><br>
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input type="text" name="fname"  class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" name="lname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="uname">User Name:</label>
+                        <input type="text" name="username"  class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password"  class="form-control" required>
+                    </div>
+                    <input type="hidden" name="roleId" value="101">
+                    <input type="submit" value="SUBMIT" class="btn btn-primary">
+
+
+                    <!-- First Name: <input type="text" name="fname" placeholder="First Name" required><br>
                     Last Name: <input type="text" name="lname" placeholder="Last Name" required><br>
                     User Name:<input type="text" name="username" placeholder="User Name" required><br>
                     Password: <input type="password" name="password" placeholder="Password" required><br>
-                    <input type="submit" value="SUBMIT">
+                    <input type="submit" value="SUBMIT"> -->
                 </form>
-            <?php }else{ ?>
-                <form action="./register/register_process.php?fromadmin=no" method="POST">
-                    First Name: <input type="text" name="fname" placeholder="First Name" required><br>
-                    Last Name: <input type="text" name="lname" placeholder="Last Name" required><br>
-                    User Name:<input type="text" name="username" placeholder="User Name" required><br>
-                    Password: <input type="password" name="password" placeholder="Password" required><br>
-                    <input type="submit" value="SUBMIT">
-                </form>
-            <?php } ?>
+
       </div>
     </div>
   </div>

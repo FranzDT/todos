@@ -1,4 +1,5 @@
 <?php
+    // require "../cons/cons.php";
 
     function userView ($id){
         $sql = "SELECT id,title, description, status
@@ -20,9 +21,10 @@
         return $sql;
     }
 
-    function editTodo($id,$description){
+    function editTodo($id,$title,$description){
         $sql = "UPDATE todos
-            SET description = '$description'
+            SET description = '$description',
+            title = '$title'
             WHERE id=$id";
         return $sql;
     }
@@ -35,9 +37,8 @@
     }
 
     function adminUserView(){
-        $sql = "SELECT id, concat(fname, ' ',lname) 'Full_Name', username
-                FROM users
-                WHERE roleId=101";
+        $sql = "SELECT id, concat(fname, ' ',lname) 'Full_Name', username, roleId
+                FROM users";
         return $sql;
     }
 
@@ -56,6 +57,38 @@
         $sql = "SELECT *
             FROM users
             WHERE id = $id";
+        return $sql;
+    }
+
+    function getTodoTitle($id){
+        require "../dbconnect/dbconnect.php";
+        $sql = "SELECT title
+                FROM todos
+                WHERE id = $id";
+        
+        $res = $conn->query($sql);
+            while($row = $res->fetch_assoc()){
+                $title = $row['title'];
+            } 
+        return $title;
+    }
+
+    function getTodoDesc($id){
+        require "../dbconnect/dbconnect.php";
+        $sql = "SELECT description
+                FROM todos
+                WHERE id = $id";
+        
+        $res = $conn->query($sql);
+            while($row = $res->fetch_assoc()){
+                $description = $row['description'];
+            } 
+        return $description;
+    }
+
+    function adminAddUser($fname,$lname,$username,$password,$roleId){
+        $sql = "INSERT INTO users (fname,lname,username,password,roleID)
+                VALUES('$fname','$lname','$username','$password',$roleId)";
         return $sql;
     }
 ?>

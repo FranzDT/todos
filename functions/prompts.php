@@ -17,11 +17,11 @@
         // Prompt for status of deleting a todo
         if(isset($_SESSION['deleteTodo'])){
             if($_SESSION['deleteTodo'] == "Successful"){
-                echo "<br>Succesfully deleted the todo<br>";
                 unset($_SESSION['deleteTodo']);
+                return true;
             }else{
-                echo "<br>Deleting of todo was unsuccessful!<br>";
                 unset($_SESSION['deleteTodo']);
+                return false;
             }
         }
     }
@@ -29,12 +29,12 @@
     function editTodoPrompt(){
         // Prompt for status of editing a todo
         if(isset($_SESSION['editTodo'])){
-            if($_SESSION['editTodo']=="Successful"){
-                echo "Successfully updated<br>";
+            if($_SESSION['editTodo']==true){
                 unset($_SESSION['editTodo']);
+                return true;
             }else{
-                echo "Failed to update<br>";
                 unset($_SESSION['editTodo']);
+                return false;
             }
         }
     }
@@ -43,11 +43,11 @@
         // prompt for status of marking tasks as done
         if(isset($_SESSION['markDone'])){
             if($_SESSION['markDone']=="Successful"){
-                echo "Successfully marked as done<br>";
                 unset($_SESSION['markDone']);
+                return true;
             }else{
-                echo "Failed to mark as done<br>";
                 unset($_SESSION['markDone']);
+                return false;
             }
         }
     }
