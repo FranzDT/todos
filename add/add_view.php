@@ -8,6 +8,7 @@
     </head>
     <body>
         <form action="add_process.php" method="POST">
+            Title: <input type="textarea" name="title" required>
             Description: <input type="textarea" name="description" required>
             <input type="submit">
         </form>

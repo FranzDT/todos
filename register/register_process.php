@@ -18,7 +18,7 @@
     $conn->close();
 
     if($_GET['fromadmin'] == "no")
-        header("Location: ../index.php");
+        header("Location: ../index.php?regstat=success");
     elseif($_GET['fromadmin'] == "yes")
         header("Location: ../user_view/user_view.php?adminopt=ShowUser");
 ?>

@@ -6,9 +6,10 @@
 
     $description = $_POST['description'];
     $id = $_SESSION['id'];
+    $title = $_POST['title'];
     $deadline = '2019-08-10';
 
-    $sql = addTodo($id,$description);
+    $sql = addTodo($id,$title,$description);
     if($conn->query($sql))
         $_SESSION['addTask'] = "Successful";
     else   

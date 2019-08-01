@@ -4,11 +4,11 @@
         // Prompt for status of adding a todo
         if(isset($_SESSION['addTask'])){
             if($_SESSION['addTask'] == "Successful"){
-                echo "<br>Succesfully added a new task<br>";
                 unset($_SESSION['addTask']);
+                return true;
             }else{
-                echo "<br>Adding of task was unsuccessful!<br>";
                 unset($_SESSION['addTask']);
+                return false;
             }
         }
     }

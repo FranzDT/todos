@@ -1,16 +1,16 @@
 <?php
 
     function userView ($id){
-        $sql = "SELECT id, description, status
+        $sql = "SELECT id,title, description, status
                 FROM todos 
                 WHERE user_id = '$id'
                 AND status ='undone';";
         return $sql;
     }
 
-    function addTodo($id,$description){
-        $sql = "INSERT INTO todos (description, status, user_id)
-                VALUES ('$description','undone', $id)";
+    function addTodo($id,$title,$description){
+        $sql = "INSERT INTO todos (title,description, status, user_id)
+                VALUES ('$title','$description','undone', $id)";
         return $sql;
     }
 
